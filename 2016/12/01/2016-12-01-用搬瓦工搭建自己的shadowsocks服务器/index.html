@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    用搬瓦工搭建自己的shadowsocks服务器 | LawAias&#39;s blog
+  </title>
+  <meta name="description" content="Programming is a simple pleasure.">
+  
+  <meta name="keywords" content="
+  shadowsocks,搬瓦工
+  ">
+  
+  <meta name="author" content="sihuan">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href="/img/avatar.jpg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="/img/avatar.jpg"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 6 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 8 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 4 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">LawAias&#39;s blog</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    sihuan
+
+    <span class="post-date float-right" title="{{moment(1480581609000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1480581609000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>用搬瓦工搭建自己的shadowsocks服务器</h1>
+    <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><ul>
+<li>作为一名程序员，平时查资料必须求助于google，奈何我大天朝的GFW，所以想要学习和查找资料只能通过VPN翻墙。</li>
+<li>现在VPN产品太多，大多VPN速度不是很稳定，也有部分VPN推出了专线套餐，不过我等穷比也是消费不起。</li>
+<li>在使用过几种VPN之后，无意间发现了一个新的方法，自己购买主机搭建VPN服务器，价格便宜，一年20刀，折合人名币才100多，而且也不用和众多用户去共享一条线路，我购买的是VPS界享有“盛誉”的搬瓦工，价格亲民、速度快，有智能后台一键搭建VPN省去很多繁琐的命令行输入，大家可以在官网首页看到机型配置和价格，最便宜的2.99刀一个月，一年20刀。而且搬瓦工是30天无条件退款的，意思就是你可以用了29天，然后申请退款，审核之后就会把钱退给你。可以让我们先试试水。<a id="more"></a></li>
+</ul>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h2 id="一-购买VPS"><a href="#一-购买VPS" class="headerlink" title="一.购买VPS"></a>一.购买VPS</h2><blockquote>
+<p>VPS有点像VirtualBox、Parallels创建出来的主机，可以理解成一台独立的主机。我们需要购买的就是这样一台独立的主机，不过一定要购买海外的，否则搭建了VPN也无法访问海外的网站。</p>
+</blockquote>
+<p>我买的是<a href="https://bandwagonhost.com" target="_blank" rel="noopener">搬瓦工</a>的VPS，并且感觉速度和体验还是不错的，安利给大家，不过用其他的海外VPS提供商也是可以的。(如果访问不了的话先借个VPN用一下吧，不挂VPN访问不是很稳定)</p>
+<p>进入之后注册，之后就可以购买主机，这个根据你自己的需求和经济状况来选择吧。（不同的主机的带宽都是一样的，只不过是配置上有差别，只用专线VPN的话，$19.99一年就够了。）这里搬瓦工也支持支付宝付款（我马云爸爸果然强大），check out的时候选择alipay就可以了</p>
+<h2 id="二-配置服务器"><a href="#二-配置服务器" class="headerlink" title="二.配置服务器"></a>二.配置服务器</h2><h3 id="1-进入控制面板，修改root密码"><a href="#1-进入控制面板，修改root密码" class="headerlink" title="1.进入控制面板，修改root密码"></a>1.进入控制面板，修改root密码</h3><p>进入账户我们在MyServices中看到你的服务器列表:<br><img src="/2016/12/01/2016-12-01-用搬瓦工搭建自己的shadowsocks服务器/服务器列表.png" title="服务器列表"></p>
+<p>单击<code>KiwiVM Control Panel</code>进入管理后台，可以看到左侧的菜单栏，点击<code>Root Shell-interatcive</code>在右边界面点击<code>Launch</code>,这时候会以H5的形式打开一个terminal窗口，执行<code>passwd</code>修改root密码。<br><img src="/2016/12/01/2016-12-01-用搬瓦工搭建自己的shadowsocks服务器/修改root密码.png" title="修改root密码"></p>
+<h3 id="2-安装一个你喜欢的Linux-OS"><a href="#2-安装一个你喜欢的Linux-OS" class="headerlink" title="2.安装一个你喜欢的Linux OS"></a>2.安装一个你喜欢的Linux OS</h3><p>左侧菜单栏找到<code>Install New OS</code>,选择一个你喜欢的系统，系统初始安装的是32位的CentOS6（个人比较懒就使用默认的了），如果你和我一样不想换其他系统可以跳过这步，<strong>需要注意的是，每次重装系统主机所有数据都会丢失</strong>。<br><img src="/2016/12/01/2016-12-01-用搬瓦工搭建自己的shadowsocks服务器/安装系统.png" title="安装系统"></p>
+<h3 id="3-安装Shadowsocks-Server"><a href="#3-安装Shadowsocks-Server" class="headerlink" title="3.安装Shadowsocks Server"></a>3.安装Shadowsocks Server</h3><blockquote>
+<p>搬瓦工也提供了openVPN一键安装，个人感觉Shadowsocks更好用，有两种加速模式，访问会更快速。<br><strong>其实这篇文章介绍的是SS的安装，它跟VPN的原理差不多，因为SS采用的是自由协议，一般被墙的可能性要小得多，所以更加稳定！一般不需要区分SS跟VPN的差别，SS在稳定性上更有优势，你值得拥有！</strong></p>
+</blockquote>
+<p>搬瓦工提供了一键安装Shadowsocks  Server的功能，不过只支持CentOS6，你也可以通过命令行的方式进行安装。<br><img src="/2016/12/01/2016-12-01-用搬瓦工搭建自己的shadowsocks服务器/shadowsock.png" title="shadowsock server"></p>
+<p>此时Shadowsocks就可以用了，不过还差一个<a href="https://shadowsocks.org" target="_blank" rel="noopener">shadowsocks客户端</a>，下载完成配置下IP和Port就可以看见新世界了(海贼王我当定了！哈哈)。Shadowsocks Server有两种加速模式 ，<strong>一般情况下勾选自动代理模式就可以了，这个这个模式下会自动判断你当前访问的域名是否在GFW名单里面，如果是就启用代理，如果不是就正常访问，这样我们在访问墙内网站的时候也不会受到任何影响</strong> ，如果你遇到网站无法访问，有可能是这个网站近期被墙了，你没有更新本地的GFW名单，如果你确定这个网站是可以打开的，切换到全局模式就可以访问了。</p>
+<h2 id="三-加速VPN"><a href="#三-加速VPN" class="headerlink" title="三.加速VPN"></a>三.加速VPN</h2><p>完成上面的步骤就可以成功越过GFW，但是下载速度还是有点慢，这时候我们用Net-Speeder给VPN加速，请君听我娓娓道来：</p>
+<h3 id="1-连上远程主机"><a href="#1-连上远程主机" class="headerlink" title="1.连上远程主机"></a>1.连上远程主机</h3><p><code>$ ssh -l root -p Port IP</code></p>
+<p>用你自己的端口号和IP，连上远程主机，输入root密码（就是第一步设置的密码）就可以了。</p>
+<h3 id="2-安装Net-Speeder"><a href="#2-安装Net-Speeder" class="headerlink" title="2.安装Net-Speeder"></a>2.安装Net-Speeder</h3><p><code>$ wget https://coding.net/u/njzhenghao/p/download/git/raw/master/net_speeder-installer.sh</code></p>
+<p>输入命令进行安装，这里用的是别人的git上的sh脚本。</p>
+<h3 id="3-编译并安装"><a href="#3-编译并安装" class="headerlink" title="3. 编译并安装"></a>3. 编译并安装</h3><p><code>$ bash net_speeder-installer.sh</code></p>
+<p>命令执行后，执行reboot重启主机。（此时远程连接会断开，需重新连接）</p>
+<h3 id="4-端口加速"><a href="#4-端口加速" class="headerlink" title="4.端口加速"></a>4.端口加速</h3><p><code>$ nohup /usr/local/net_speeder/net_speeder venet0 &quot;ip&quot; &gt;/dev/null 2&gt;&amp;1 &amp;</code></p>
+<p>执行完这个命令应该会有一个端口号打印出来，证明加速成功了！别着急还有最后一步，点开Shadowsocks Server菜单点击退出，<em>不要点关闭Shadowsocks Server</em>，然后再次打开App，现在打开YouTube看个视频试试吧！现在墙外网站下载速度一般都在500KB左右，当然这个速度也受到你所在运营商的网络环境影响。（<strong>注意：加速端口这个命令每次重启主机都需要执行一次，因为这个脚本没有加到开机自启动，反正我们没事也不重启主机，我懒得弄了，大家自己Google吧，哈哈！</strong>)</p>
+
+  </article>
+</div>
+
+
+    
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://lawaias.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 sihuan</li>
+      <li><a href="https://lawaias.github.io">Home</a></li>
+      
+      <li><a href="https://lawaias.github.io">Github</a></li>
+      
+      <li><a href="http://weibo.com/u/3076962361?is_all=1">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

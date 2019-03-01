@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    TabLayout之踩坑传奇 | LawAias&#39;s blog
+  </title>
+  <meta name="description" content="Programming is a simple pleasure.">
+  
+  <meta name="keywords" content="
+  Android,TabLayout
+  ">
+  
+  <meta name="author" content="sihuan">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href="/img/avatar.jpg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="/img/avatar.jpg"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 6 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 8 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 4 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">LawAias&#39;s blog</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    sihuan
+
+    <span class="post-date float-right" title="{{moment(1481091577000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1481091577000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>TabLayout之踩坑传奇</h1>
+    <p>今天中午休息的时候，同事研究起了MD，对!就是传说中的<a href="https://material.google.com/" target="_blank" rel="noopener">Material design</a>。他想要写一个MD主题的app，可是遇到个关于TabLayout的问题。本来想做出的效果是这个样子的。<a id="more"></a><br><img src="/2016/12/07/2016-12-07-TabLayout之踩坑传奇/想象中的效果.png" title="想象中的效果"></p>
+<p>好了开工，写完一运行，额，完全不对啊！我的title呢？？！！<img src="/2016/12/07/2016-12-07-TabLayout之踩坑传奇/3E527F51.gif" title="3E527F51"></p>
+<img src="/2016/12/07/2016-12-07-TabLayout之踩坑传奇/title不见了！！.png" title="title不见了！！">
+<p>我好奇的过去瞅瞅，看了看。没有问题啊。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initViews</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       tabLayout.addTab(tabLayout.newTab().setText(<span class="string">"ftm1"</span>));</span><br><span class="line">       tabLayout.addTab(tabLayout.newTab().setText(<span class="string">"ftm2"</span>));</span><br><span class="line">       viewPager.setAdapter(<span class="keyword">new</span> FragmentStatePagerAdapter(getSupportFragmentManager()) &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> Fragment <span class="title">getItem</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">               <span class="keyword">return</span> fragments.get(position);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">               <span class="keyword">return</span> fragments == <span class="keyword">null</span> ? <span class="number">0</span> : fragments.size();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">       tabLayout.setupWithViewPager(viewPager);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>设置了tab也加上了<code>setupWithViewPager</code>方法啊。查阅了一番资料，是调用<code>setupWithViewPager</code>方法将所有tab清除了。不说废话了上代码，看下是怎么移除tab的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setupWithViewPager</span><span class="params">(@Nullable <span class="keyword">final</span> ViewPager viewPager, <span class="keyword">boolean</span> autoRefresh)</span> </span>&#123;</span><br><span class="line">        setupWithViewPager(viewPager, autoRefresh, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setupWithViewPager</span><span class="params">(@Nullable <span class="keyword">final</span> ViewPager viewPager, <span class="keyword">boolean</span> autoRefresh,</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">boolean</span> implicitSetup)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mViewPager != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// If we've already been setup with a ViewPager, remove us from it</span></span><br><span class="line">            <span class="keyword">if</span> (mPageChangeListener != <span class="keyword">null</span>) &#123;</span><br><span class="line">                mViewPager.removeOnPageChangeListener(mPageChangeListener);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (mAdapterChangeListener != <span class="keyword">null</span>) &#123;</span><br><span class="line">                mViewPager.removeOnAdapterChangeListener(mAdapterChangeListener);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (mCurrentVpSelectedListener != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// If we already have a tab selected listener for the ViewPager, remove it</span></span><br><span class="line">            removeOnTabSelectedListener(mCurrentVpSelectedListener);</span><br><span class="line">            mCurrentVpSelectedListener = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (viewPager != <span class="keyword">null</span>) &#123;</span><br><span class="line">            mViewPager = viewPager;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Add our custom OnPageChangeListener to the ViewPager</span></span><br><span class="line">            <span class="keyword">if</span> (mPageChangeListener == <span class="keyword">null</span>) &#123;</span><br><span class="line">                mPageChangeListener = <span class="keyword">new</span> TabLayoutOnPageChangeListener(<span class="keyword">this</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            mPageChangeListener.reset();</span><br><span class="line">            viewPager.addOnPageChangeListener(mPageChangeListener);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Now we'll add a tab selected listener to set ViewPager's current item</span></span><br><span class="line">            mCurrentVpSelectedListener = <span class="keyword">new</span> ViewPagerOnTabSelectedListener(viewPager);</span><br><span class="line">            addOnTabSelectedListener(mCurrentVpSelectedListener);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">final</span> PagerAdapter adapter = viewPager.getAdapter();</span><br><span class="line">            <span class="keyword">if</span> (adapter != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="comment">// Now we'll populate ourselves from the pager adapter, adding an observer if</span></span><br><span class="line">                <span class="comment">// autoRefresh is enabled</span></span><br><span class="line">                setPagerAdapter(adapter, autoRefresh);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Add a listener so that we're notified of any adapter changes</span></span><br><span class="line">            <span class="keyword">if</span> (mAdapterChangeListener == <span class="keyword">null</span>) &#123;</span><br><span class="line">                mAdapterChangeListener = <span class="keyword">new</span> AdapterChangeListener();</span><br><span class="line">            &#125;</span><br><span class="line">            mAdapterChangeListener.setAutoRefresh(autoRefresh);</span><br><span class="line">            viewPager.addOnAdapterChangeListener(mAdapterChangeListener);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Now update the scroll position to match the ViewPager's current item</span></span><br><span class="line">            setScrollPosition(viewPager.getCurrentItem(), <span class="number">0f</span>, <span class="keyword">true</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// We've been given a null ViewPager so we need to clear out the internal state,</span></span><br><span class="line">            <span class="comment">// listeners and observers</span></span><br><span class="line">            mViewPager = <span class="keyword">null</span>;</span><br><span class="line">            setPagerAdapter(<span class="keyword">null</span>, <span class="keyword">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        mSetupViewPagerImplicitly = implicitSetup;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>在调用<code>setupWithViewPager</code>会调用到<code>setPagerAdapter(null, false)</code>看下这个方法里发生了什么吧。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setPagerAdapter</span><span class="params">(@Nullable <span class="keyword">final</span> PagerAdapter adapter, <span class="keyword">final</span> <span class="keyword">boolean</span> addObserver)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mPagerAdapter != <span class="keyword">null</span> &amp;&amp; mPagerAdapterObserver != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// If we already have a PagerAdapter, unregister our observer</span></span><br><span class="line">            mPagerAdapter.unregisterDataSetObserver(mPagerAdapterObserver);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        mPagerAdapter = adapter;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (addObserver &amp;&amp; adapter != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// Register our observer on the new adapter</span></span><br><span class="line">            <span class="keyword">if</span> (mPagerAdapterObserver == <span class="keyword">null</span>) &#123;</span><br><span class="line">                mPagerAdapterObserver = <span class="keyword">new</span> PagerAdapterObserver();</span><br><span class="line">            &#125;</span><br><span class="line">            adapter.registerDataSetObserver(mPagerAdapterObserver);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Finally make sure we reflect the new adapter</span></span><br><span class="line">        populateFromPagerAdapter();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>setPagerAdapter</code>里又调用了<code>populateFromPagerAdapter（）</code>,点开这个方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">populateFromPagerAdapter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        removeAllTabs();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (mPagerAdapter != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> adapterCount = mPagerAdapter.getCount();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; adapterCount; i++) &#123;</span><br><span class="line">                addTab(newTab().setText(mPagerAdapter.getPageTitle(i)), <span class="keyword">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Make sure we reflect the currently set ViewPager item</span></span><br><span class="line">            <span class="keyword">if</span> (mViewPager != <span class="keyword">null</span> &amp;&amp; adapterCount &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">final</span> <span class="keyword">int</span> curItem = mViewPager.getCurrentItem();</span><br><span class="line">                <span class="keyword">if</span> (curItem != getSelectedTabPosition() &amp;&amp; curItem &lt; getTabCount()) &#123;</span><br><span class="line">                    selectTab(getTabAt(curItem));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>这个<code>populateFromPagerAdapter（）</code>方法里将tabLayout里所有的tab移除了，又重新new了tab。所以原来add的tab没有显示，那怎么解决呢？再仔细看这个方法，对没错，<code>addTab(newTab().setText(mPagerAdapter.getPageTitle(i)), false);</code>在重新new tab的过程中有重新传title，这个值是通过<code>mPagerAdapter.getPageTitle(i))</code>获取的，那么我们在<code>ViewPager</code>的<code>FragmentPagerAdapter</code>重写<code>getPageTitle</code>方法，默认的<code>PagerAdapter</code>返回的是null。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> CharSequence <span class="title">getPageTitle</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们把代码修改成下面的样子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initViews</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        viewPager.setAdapter(<span class="keyword">new</span> FragmentPagerAdapter(getSupportFragmentManager()) &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Fragment <span class="title">getItem</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> fragments.get(position);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> fragments == <span class="keyword">null</span> ? <span class="number">0</span> : fragments.size();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> CharSequence <span class="title">getPageTitle</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> titles.get(position);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        tabLayout.setupWithViewPager(viewPager);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>O(∩_∩)O哈哈~现在就是我们想要的样子啦。。。<a href="https://github.com/LawAias/TabLayoutDemo" target="_blank" rel="noopener">我写的Demo源码</a></p>
+<p><a href="https://my.oschina.net/oschenxiaomo/blog/649239" target="_blank" rel="noopener">参考资料</a></p>
+
+  </article>
+</div>
+
+
+    
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://lawaias.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 sihuan</li>
+      <li><a href="https://lawaias.github.io">Home</a></li>
+      
+      <li><a href="https://lawaias.github.io">Github</a></li>
+      
+      <li><a href="http://weibo.com/u/3076962361?is_all=1">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
