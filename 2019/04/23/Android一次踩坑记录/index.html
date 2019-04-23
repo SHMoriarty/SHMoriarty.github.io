@@ -7,12 +7,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>
-    创建一个简单的博客 | LawAias&#39;s blog
+    Android一次踩坑记录 | LawAias&#39;s blog
   </title>
   <meta name="description" content="Programming is a simple pleasure.">
   
   <meta name="keywords" content="
-  blog
+  Android
   ">
   
   <meta name="author" content="sihuan">
@@ -119,28 +119,20 @@
     <i class="fa fa-user-o"></i>
     sihuan
 
-    <span class="post-date float-right" title="{{moment(1480580861000).format('MMM DD, YYYY, h:mm:ss A')}}">
+    <span class="post-date float-right" title="{{moment(1555991222000).format('MMM DD, YYYY, h:mm:ss A')}}">
       <i class="fa fa-pencil-square-o"></i>
-      {{moment(1480580861000).fromNow()}}
+      {{moment(1555991222000).fromNow()}}
     </span>
   </h3>
 
   <article class="post-content">
-    <h1>创建一个简单的博客</h1>
-    <p>感觉有自己的博客逼格很高，找了个简单的方法，并装了个比O(∩_∩)O哈哈~，详细说下生成博客的过程吧。<a id="more"></a></p>
-<ul>
-<li><p>首先需要注册一个<a href="https://github.com" target="_blank" rel="noopener">GitHub</a>的账号。（不过感觉大家作为程序员应该都有的）</p>
+    <h1>Android一次踩坑记录</h1>
+    <ul>
+<li><p>事情经过</p>
+<p>昨天尝试去用activity实现一个dialog的效果，结果发现运行到这个activity时App崩溃，查看logcat发现<code>Only fullscreen opaque activities can request orientation</code>报错，大概意思是只有全屏不透明的activity才能设置方向，但是我之前在别的项目里使用正常，所以我去百度搜索了一下原因。发现是在Android8.0之后只有全屏不透明的activity才能设置方向，之前使用的项目都是6.0并没有到8.0所以不会报错。</p>
 </li>
-<li><p>创建一个<code>username.github.io</code>的仓库，<code>username</code>用你自己的用户名，注意记得勾选生成README。</p>
-<img src="/2016/12/01/2016-12-01-创建一个简单的博客/写博客啦.png" title="创建github仓库">
-</li>
-<li><p>用github账号登录<a href="http://isnowfy.github.io/simple/" target="_blank" rel="noopener">simple</a>(PS:登录的是用户名o(╯□╰)o不是邮箱我用邮箱试了好多次。。。。。)</p>
-</li>
-<li><p>点击<code>Initialize</code>初始化blog，之后点击<code>go</code>就可以用markdown写blog了</p>
-  <img src="/2016/12/01/2016-12-01-创建一个简单的博客/simple.png" title="simple">
-<p>单击<code>New post</code>新建文章来写作。完成之后点击<code>save</code>就可以生成静态页面了，之后访问<code>username.github.io</code>就可以看到生成的blog啦！O(∩_∩)O~~</p>
-<img src="/2016/12/01/2016-12-01-创建一个简单的博客/写博客啦.png" title="写博客啦">
-<p>（PS : 注意GitHub Pages貌似有缓存，也就是说会有一段时间的延迟，可能不能立即看到效果，不过等几分钟就好啦。）</p>
+<li><p>解决方案</p>
+<p>1.找到你设置透明的Activity，然后在他的theme中将android:windowIsTranslucent改为false<br><code>&lt;item name=&quot;android:windowIsTranslucent&quot;&gt;false&lt;/item&gt;</code><br>2.再加入<code>&lt;item name=&quot;android:windowDisablePreview&quot;&gt;true&lt;/item&gt;</code><br>3.去掉activity中的orientation属性</p>
 </li>
 </ul>
 
