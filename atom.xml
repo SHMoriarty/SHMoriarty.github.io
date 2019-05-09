@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>LawAias&#39;s blog</title>
+  <title>SHMoriarty&#39;s blog</title>
   <icon>https://www.gravatar.com/avatar/dae0060bb389b361392b4d203b250e04</icon>
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://lawaias.github.io/"/>
-  <updated>2019-04-23T03:53:40.642Z</updated>
-  <id>https://lawaias.github.io/</id>
+  <link href="https://shmoriarty.github.io/"/>
+  <updated>2019-04-24T02:17:53.172Z</updated>
+  <id>https://shmoriarty.github.io/</id>
   
   <author>
     <name>sihuan</name>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Android一次踩坑记录</title>
-    <link href="https://lawaias.github.io/2019/04/23/Android%E4%B8%80%E6%AC%A1%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/"/>
-    <id>https://lawaias.github.io/2019/04/23/Android一次踩坑记录/</id>
+    <link href="https://shmoriarty.github.io/2019/04/23/Android%E4%B8%80%E6%AC%A1%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/"/>
+    <id>https://shmoriarty.github.io/2019/04/23/Android一次踩坑记录/</id>
     <published>2019-04-23T03:47:02.000Z</published>
-    <updated>2019-04-23T03:53:40.642Z</updated>
+    <updated>2019-04-24T02:17:53.172Z</updated>
     
     <content type="html"><![CDATA[<ul><li><p>事情经过</p><p>昨天尝试去用activity实现一个dialog的效果，结果发现运行到这个activity时App崩溃，查看logcat发现<code>Only fullscreen opaque activities can request orientation</code>报错，大概意思是只有全屏不透明的activity才能设置方向，但是我之前在别的项目里使用正常，所以我去百度搜索了一下原因。发现是在Android8.0之后只有全屏不透明的activity才能设置方向，之前使用的项目都是6.0并没有到8.0所以不会报错。</p></li><li><p>解决方案</p><p>1.找到你设置透明的Activity，然后在他的theme中将android:windowIsTranslucent改为false<br><code>&lt;item name=&quot;android:windowIsTranslucent&quot;&gt;false&lt;/item&gt;</code><br>2.再加入<code>&lt;item name=&quot;android:windowDisablePreview&quot;&gt;true&lt;/item&gt;</code><br>3.去掉activity中的orientation属性</p></li></ul>]]></content>
     
@@ -36,17 +36,17 @@
     
     </summary>
     
-      <category term="学习" scheme="https://lawaias.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+      <category term="学习" scheme="https://shmoriarty.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="Android" scheme="https://lawaias.github.io/tags/Android/"/>
+      <category term="A ndroid" scheme="https://shmoriarty.github.io/tags/A-ndroid/"/>
     
   </entry>
   
   <entry>
     <title>python爬虫爬取豆瓣Top250</title>
-    <link href="https://lawaias.github.io/2018/12/28/2018-12-28-python%E7%88%AC%E8%99%AB%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3Top250/"/>
-    <id>https://lawaias.github.io/2018/12/28/2018-12-28-python爬虫爬取豆瓣Top250/</id>
+    <link href="https://shmoriarty.github.io/2018/12/28/2018-12-28-python%E7%88%AC%E8%99%AB%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3Top250/"/>
+    <id>https://shmoriarty.github.io/2018/12/28/2018-12-28-python爬虫爬取豆瓣Top250/</id>
     <published>2018-12-28T06:17:07.000Z</published>
     <updated>2019-03-01T04:55:05.897Z</updated>
     
@@ -58,17 +58,17 @@
     
     </summary>
     
-      <category term="学习" scheme="https://lawaias.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+      <category term="学习" scheme="https://shmoriarty.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="python" scheme="https://lawaias.github.io/tags/python/"/>
+      <category term="python" scheme="https://shmoriarty.github.io/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>读书笔记-View绘制</title>
-    <link href="https://lawaias.github.io/2017/02/21/2017-02-21-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-view%E7%BB%98%E5%88%B6/"/>
-    <id>https://lawaias.github.io/2017/02/21/2017-02-21-读书笔记-view绘制/</id>
+    <link href="https://shmoriarty.github.io/2017/02/21/2017-02-21-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-view%E7%BB%98%E5%88%B6/"/>
+    <id>https://shmoriarty.github.io/2017/02/21/2017-02-21-读书笔记-view绘制/</id>
     <published>2017-02-21T08:01:44.000Z</published>
     <updated>2019-02-28T07:03:05.798Z</updated>
     
@@ -80,19 +80,19 @@
     
     </summary>
     
-      <category term="读书笔记" scheme="https://lawaias.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="https://shmoriarty.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="https://lawaias.github.io/tags/Android/"/>
+      <category term="Android" scheme="https://shmoriarty.github.io/tags/Android/"/>
     
-      <category term="view绘制" scheme="https://lawaias.github.io/tags/view%E7%BB%98%E5%88%B6/"/>
+      <category term="view绘制" scheme="https://shmoriarty.github.io/tags/view%E7%BB%98%E5%88%B6/"/>
     
   </entry>
   
   <entry>
     <title>Android反编译学习</title>
-    <link href="https://lawaias.github.io/2016/12/16/2016-12-16-Android%E5%8F%8D%E7%BC%96%E8%AF%91%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://lawaias.github.io/2016/12/16/2016-12-16-Android反编译学习/</id>
+    <link href="https://shmoriarty.github.io/2016/12/16/2016-12-16-Android%E5%8F%8D%E7%BC%96%E8%AF%91%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://shmoriarty.github.io/2016/12/16/2016-12-16-Android反编译学习/</id>
     <published>2016-12-16T05:55:49.000Z</published>
     <updated>2019-03-01T03:53:08.591Z</updated>
     
@@ -104,19 +104,19 @@
     
     </summary>
     
-      <category term="开发" scheme="https://lawaias.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+      <category term="开发" scheme="https://shmoriarty.github.io/categories/%E5%BC%80%E5%8F%91/"/>
     
     
-      <category term="Android" scheme="https://lawaias.github.io/tags/Android/"/>
+      <category term="Android" scheme="https://shmoriarty.github.io/tags/Android/"/>
     
-      <category term="反编译" scheme="https://lawaias.github.io/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+      <category term="反编译" scheme="https://shmoriarty.github.io/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
     
   </entry>
   
   <entry>
     <title>TabLayout之踩坑传奇</title>
-    <link href="https://lawaias.github.io/2016/12/07/2016-12-07-TabLayout%E4%B9%8B%E8%B8%A9%E5%9D%91%E4%BC%A0%E5%A5%87/"/>
-    <id>https://lawaias.github.io/2016/12/07/2016-12-07-TabLayout之踩坑传奇/</id>
+    <link href="https://shmoriarty.github.io/2016/12/07/2016-12-07-TabLayout%E4%B9%8B%E8%B8%A9%E5%9D%91%E4%BC%A0%E5%A5%87/"/>
+    <id>https://shmoriarty.github.io/2016/12/07/2016-12-07-TabLayout之踩坑传奇/</id>
     <published>2016-12-07T06:19:37.000Z</published>
     <updated>2019-03-01T04:55:09.610Z</updated>
     
@@ -128,19 +128,19 @@
     
     </summary>
     
-      <category term="开发" scheme="https://lawaias.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+      <category term="开发" scheme="https://shmoriarty.github.io/categories/%E5%BC%80%E5%8F%91/"/>
     
     
-      <category term="Android" scheme="https://lawaias.github.io/tags/Android/"/>
+      <category term="Android" scheme="https://shmoriarty.github.io/tags/Android/"/>
     
-      <category term="TabLayout" scheme="https://lawaias.github.io/tags/TabLayout/"/>
+      <category term="TabLayout" scheme="https://shmoriarty.github.io/tags/TabLayout/"/>
     
   </entry>
   
   <entry>
     <title>用搬瓦工搭建自己的shadowsocks服务器</title>
-    <link href="https://lawaias.github.io/2016/12/01/2016-12-01-%E7%94%A8%E6%90%AC%E7%93%A6%E5%B7%A5%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84shadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    <id>https://lawaias.github.io/2016/12/01/2016-12-01-用搬瓦工搭建自己的shadowsocks服务器/</id>
+    <link href="https://shmoriarty.github.io/2016/12/01/2016-12-01-%E7%94%A8%E6%90%AC%E7%93%A6%E5%B7%A5%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84shadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>https://shmoriarty.github.io/2016/12/01/2016-12-01-用搬瓦工搭建自己的shadowsocks服务器/</id>
     <published>2016-12-01T08:40:09.000Z</published>
     <updated>2019-03-01T04:55:08.737Z</updated>
     
@@ -155,19 +155,19 @@
     
     </summary>
     
-      <category term="开发" scheme="https://lawaias.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+      <category term="开发" scheme="https://shmoriarty.github.io/categories/%E5%BC%80%E5%8F%91/"/>
     
     
-      <category term="shadowsocks" scheme="https://lawaias.github.io/tags/shadowsocks/"/>
+      <category term="shadowsocks" scheme="https://shmoriarty.github.io/tags/shadowsocks/"/>
     
-      <category term="搬瓦工" scheme="https://lawaias.github.io/tags/%E6%90%AC%E7%93%A6%E5%B7%A5/"/>
+      <category term="搬瓦工" scheme="https://shmoriarty.github.io/tags/%E6%90%AC%E7%93%A6%E5%B7%A5/"/>
     
   </entry>
   
   <entry>
     <title>创建一个简单的博客</title>
-    <link href="https://lawaias.github.io/2016/12/01/2016-12-01-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://lawaias.github.io/2016/12/01/2016-12-01-创建一个简单的博客/</id>
+    <link href="https://shmoriarty.github.io/2016/12/01/2016-12-01-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://shmoriarty.github.io/2016/12/01/2016-12-01-创建一个简单的博客/</id>
     <published>2016-12-01T08:27:41.000Z</published>
     <updated>2019-03-01T04:55:07.370Z</updated>
     
@@ -179,10 +179,10 @@
     
     </summary>
     
-      <category term="记录" scheme="https://lawaias.github.io/categories/%E8%AE%B0%E5%BD%95/"/>
+      <category term="记录" scheme="https://shmoriarty.github.io/categories/%E8%AE%B0%E5%BD%95/"/>
     
     
-      <category term="blog" scheme="https://lawaias.github.io/tags/blog/"/>
+      <category term="blog" scheme="https://shmoriarty.github.io/tags/blog/"/>
     
   </entry>
   
