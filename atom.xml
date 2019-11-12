@@ -3,7 +3,7 @@
   <title>blog</title>
   
   <subtitle>sihuan</subtitle>
-  <link href="/blog/atom.xml" rel="self"/>
+  <link href="blog/atom.xml" rel="self"/>
   
   <link href="http://sihuan1994.gitee.io/blog/"/>
   <updated>2019-11-12T00:52:12.842Z</updated>
