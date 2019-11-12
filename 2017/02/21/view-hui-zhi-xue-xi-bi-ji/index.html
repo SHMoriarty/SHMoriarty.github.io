@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Android反编译入门, blog">
-    <meta name="description" content="作为Android程序员，看到别人写了炫酷的APP，就会思考如果是我，我会怎么写呢，有时候没有思路，或者实现的略有缺陷，就会很难受，这时候怎么办。当我们对别人开发好的应用感兴趣时，利用反编译，看下别人到底是如何实现的。下面就介绍下我学习到的">
+    <meta name="keywords" content="view绘制学习笔记, blog">
+    <meta name="description" content="在Android中View存在有两种形式，一种是单一的View，另一种是可以包含其他View的ViewGroup容器。
+View绘制的整体流程启动一个Activity时，Android系统会根据Activity的布局对它进行绘制。绘制从根视">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Android反编译入门 | blog</title>
+    <title>view绘制学习笔记 | blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -241,13 +242,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Android反编译入门
+                        view绘制学习笔记
                     </div>
                 </div>
             </div>
@@ -363,8 +364,8 @@
                                 <span class="chip bg-color">Android</span>
                             </a>
                         
-                            <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">
-                                <span class="chip bg-color">反编译</span>
+                            <a href="/tags/view%E7%BB%98%E5%88%B6/">
+                                <span class="chip bg-color">view绘制</span>
                             </a>
                         
                     </div>
@@ -375,8 +376,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
-                                开发
+                            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="post-category">
+                                读书笔记
                             </a>
                         
                     </div>
@@ -388,7 +389,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2016-12-16
+                    2017-02-21
                 </div>
                 
 
@@ -397,14 +398,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    851
+                    748
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    2 分
                 </div>
                 
 				
@@ -420,22 +421,26 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>作为Android程序员，看到别人写了炫酷的APP，就会思考如果是我，我会怎么写呢，有时候没有思路，或者实现的略有缺陷，就会很难受，这时候怎么办。当我们对别人开发好的应用感兴趣时，利用反编译，看下别人到底是如何实现的。下面就介绍下我学习到的反编译的方法：</p>
-<h2 id="1-准备工具"><a href="#1-准备工具" class="headerlink" title="1.准备工具"></a>1.准备工具</h2><p>巧妇难为无米之炊，反编译之前我们要将工具准备好。这里我们需要两个工具：</p>
+                <p>在Android中View存在有两种形式，一种是单一的View，另一种是可以包含其他View的ViewGroup容器。</p>
+<h2 id="View绘制的整体流程"><a href="#View绘制的整体流程" class="headerlink" title="View绘制的整体流程"></a>View绘制的整体流程</h2><p>启动一个Activity时，Android系统会根据Activity的布局对它进行绘制。绘制从根视图的ViewGroup的<code>performTraversals()</code>方法开始，从上到下便利整个视图树，每一个View控件负责绘制自己，而ViewGroup还负责通知自己的子View进行绘制。视图的绘制分为三个步骤：测量（Measure）、布局（Layout）、绘制（Draw）。</p>
+<h2 id="MeasureSpec"><a href="#MeasureSpec" class="headerlink" title="MeasureSpec"></a>MeasureSpec</h2><p>MeasureSpec表示的是一个32的整型值，它的高2位表示的是测量模式，低30位表示某种测量模式下的规格大小。MeasureSepc是View类的一个静态内部类，用来表明如何测量这个View。测量模式有三种：UNSPECIFIED、EXACTLY、AT_MOST。</p>
 <ul>
-<li><a href="https://bitbucket.org/iBotPeaches/apktool/downloads" target="_blank" rel="noopener">apktool</a> （获取app的资源文件）</li>
-<li><a href="https://sourceforge.net/projects/dex2jar/files/" target="_blank" rel="noopener">dex2jar</a> （获取app的源码）</li>
+<li>UNSPECIFIED：不指定测量模式，父视图没有限制子视图的大小，子视图可以是想要的任何尺寸，通常用于系统内部，应用开发很少用到。</li>
+<li>EXACTLY：精确测量模式，当该视图的layout_width或者layout_height指定为具体数值或者mach_parent时生效，表示父视图已经决定了子视图的精确大小，这种模式下View的测量值就是SpecSize的值。</li>
+<li>AT_MOST：最大值模式，当该视图的layout_width或者layout_height指定为wrap_content时生效，此时子视图的尺寸是不可以超过父视图允许的最大尺寸的任何尺寸。</li>
 </ul>
-<h2 id="2-反编译过程"><a href="#2-反编译过程" class="headerlink" title="2.反编译过程"></a>2.反编译过程</h2><p>工具下载完成之后把这两个工具和你要反编译的apk放在一个目录下，我们就可以开始我们的反编译之路啦，哦这里还要说明一下，反编译APK是需要java的环境（这里就不介绍java的环境搭建了，不知道的请你面壁去！！）。</p>
-<h3 id="2-1使用apktool获取apk的资源文件"><a href="#2-1使用apktool获取apk的资源文件" class="headerlink" title="2.1使用apktool获取apk的资源文件"></a>2.1使用apktool获取apk的资源文件</h3><p>打开命令行，进入工具包和apk所在的目录，接下来就是运行apktool.jar 这个jar文件来将apk文件进行反编译，在java中运行可执行的jar包命令是：<code>java -jar jar包名.jar</code></p>
-<p>使用下面的命令运行apktool.jar来反编译apk：</p>
-<p><code>java -jar apktool.jar d -f apk绝对路径 -o apkDex</code>这个命令是将你想想要反编译的apk，将反编译生成的文件放到当前目录下的【apkdex】文件夹下，这个参数可以自己取。如果在反编译过程中没有报错，就表示反编译成功了。这里我遇到了一个问题当我执行命令的时候命令行报错Error: Unable to access jarfile XXX.jar这时候你要看下你是否进入了工具包所在的目录下或者你运行的jar的文件名是否有打错。反编译成功，会在当前目录下生成一个apkDex文件夹，打开文件夹就会看到反编译生成的文件</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8v9hzr44cj30lk05ht90.jpg" alt="反编译后生产的文件"></p>
-<p>打开res文件夹就能看到，apk里的资源文件了</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8v9jpbl9zj30dw0pognu.jpg" alt="es目录"></p>
-<p>想要看查看哪个xml就用文本编辑器打开看到 ，到这里就是使用apktool将这个工具反编译得到图片，xml等资源文件的过程。</p>
-<h3 id="2-2使用dex2jar反编译apk得到java源代码"><a href="#2-2使用dex2jar反编译apk得到java源代码" class="headerlink" title="2.2使用dex2jar反编译apk得到java源代码"></a>2.2使用dex2jar反编译apk得到java源代码</h3><p>将你要反编译的apk后缀名改成zip，并解压，取出其中的classes.dex文件（这个文件就是java文件编译在通过dx工具打包生成的）。下载的dex2jar也解压，并把apk的classes.dex取出来放进去。<br><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8v9ksadnpj30iu0flq4j.jpg" alt="dex文件"></p>
-<p>在命令行进到这个目录下，输入<code>d2j-dex2jar classes.dex</code>执行过程中没有出错就表示反编译成功，在当前目录下就可以看到生成的classes.dex2jar.jar文件这就是java的源代码了，之后就可以使用<a href="http://jd.benow.ca/" target="_blank" rel="noopener">jd-gui</a>查看源代码了，但是混淆过得class，反编译的效果不是那么理想了。不过我么也能通过修改xml利用apktool重新生成apk，来对apk进行汉化或者去广告。这个就不在本文不细说了。</p>
+<p>对DecorView而言，它的MeasureSpec由窗口尺寸和其自身的LayoutParams共同决定；对于普通的View，它的MeasureSpec由父视图的MeasureSpec和其自身的LayoutParams共同决定。</p>
+<h2 id="Measure"><a href="#Measure" class="headerlink" title="Measure"></a>Measure</h2><p>Measure操作是用来计算View的实际大小，页面的测量流程是从performMeasure方法开始。具体的测量操作是分发给ViewGroup的，由ViewGroup在它的measureChild方法中传递给子View，ViewGroup通过遍历自身所有的子View，并逐个调用子View的Measure方法实现测量操作。</p>
+<h2 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h2><p> Layout过程用来确定View在父容器中的布局位置，它是由父容器获取子View的位置参数后，再调用View的Layout方法并将位置参数传入实现的。</p>
+<h2 id="Draw"><a href="#Draw" class="headerlink" title="Draw"></a>Draw</h2><p>Draw操作用来将控件绘制出来，绘制的流程从performDraw方法开始，最终调用到每个View的draw方法绘制每个具体的View，绘制基本上可以分为六个步骤：</p>
+<ul>
+<li>步骤一：绘制View的背景<code>drawBackground(canvas)</code>；</li>
+<li>步骤二：如果需要的话，保存canvas的图层，为fading做准备<code>saveCount = canvas.getSaveCount</code>…<code>canvas.saveLayer(left, top, right, top + length, null, flags);</code></li>
+<li>步骤三：绘制View的内容<code>onDraw(canvas);</code></li>
+<li>步骤四：绘制View的子View<code>diaspatchDraw(canvas)</code>;</li>
+<li>步骤五：如果需要的话，绘制View的fading边缘并回复图层<code>canvas.drawRect(left, top, right, top + length, p)</code>…<code>canvas.restoreToCount(saveCount)</code></li>
+<li>步骤六：绘制View的装饰（例如滚动条）<code>onDrawScrollBars(canvas)</code> </li>
+</ul>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -479,7 +484,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://sihuan1994.gitee.io/2016/12/16/android-fan-bian-yi-ru-men/">http://sihuan1994.gitee.io/2016/12/16/android-fan-bian-yi-ru-men/</a>
+                    <a href="http://sihuan1994.gitee.io/2017/02/21/view-hui-zhi-xue-xi-bi-ji/">http://sihuan1994.gitee.io/2017/02/21/view-hui-zhi-xue-xi-bi-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -521,8 +526,8 @@
                                     <span class="chip bg-color">Android</span>
                                 </a>
                             
-                                <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">
-                                    <span class="chip bg-color">反编译</span>
+                                <a href="/tags/view%E7%BB%98%E5%88%B6/">
+                                    <span class="chip bg-color">view绘制</span>
                                 </a>
                             
                         </div>
@@ -695,32 +700,36 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/02/21/view-hui-zhi-xue-xi-bi-ji/">
+                <a href="/2018/12/28/python-pa-chong-xue-xi-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="view绘制学习笔记">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="python爬虫学习笔记">
                         
-                        <span class="card-title">view绘制学习笔记</span>
+                        <span class="card-title">python爬虫学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在Android中View存在有两种形式，一种是单一的View，另一种是可以包含其他View的ViewGroup容器。
-View绘制的整体流程启动一个Activity时，Android系统会根据Activity的布局对它进行绘制。绘制从根视
+                            目标:爬取豆瓣Top250数据(这里只是学习)
+创建Scrapy项目这里使用的是python的一个爬虫框架scrapy
+在cmd里使用下面命令安装scrapy
+pip install scrapy
+使用下面的命令创建项目
+scrapy st
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2017-02-21
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-12-28
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    读书笔记
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
                                 </a>
                             
                             
@@ -730,12 +739,8 @@ View绘制的整体流程启动一个Activity时，Android系统会根据Activit
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Android/">
-                        <span class="chip bg-color">Android</span>
-                    </a>
-                    
-                    <a href="/tags/view%E7%BB%98%E5%88%B6/">
-                        <span class="chip bg-color">view绘制</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -746,7 +751,7 @@ View绘制的整体流程启动一个Activity时，Android系统会根据Activit
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2016/12/16/android-fan-bian-yi-ru-men/">
@@ -780,7 +785,6 @@ View绘制的整体流程启动一个Activity时，Android系统会根据Activit
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
