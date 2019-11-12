@@ -39,4 +39,34 @@
     
   </entry>
   
+  <entry>
+    <title>Android反编译入门</title>
+    <link href="http://sihuan1994.gitee.io/2016/12/16/android-fan-bian-yi-ru-men/"/>
+    <id>http://sihuan1994.gitee.io/2016/12/16/android-fan-bian-yi-ru-men/</id>
+    <published>2016-12-16T05:55:49.000Z</published>
+    <updated>2019-11-12T07:00:32.108Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;作为Android程序员，看到别人写了炫酷的APP，就会思考如果是我，我会怎么写呢，有时候没有思路，或者实现的略有缺陷，就会很难受，这时候怎么办。当我们对别人开发好的应用感兴趣时，利用反编译，看下别人到底是如何实现的。下面就介绍下我学习到的反编译的方法：&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="开发" scheme="http://sihuan1994.gitee.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="Android" scheme="http://sihuan1994.gitee.io/tags/Android/"/>
+    
+      <category term="反编译" scheme="http://sihuan1994.gitee.io/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+    
+  </entry>
+  
 </feed>
