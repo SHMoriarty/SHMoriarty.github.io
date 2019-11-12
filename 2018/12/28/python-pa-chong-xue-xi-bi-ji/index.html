@@ -4,8 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, blog">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="python爬虫学习笔记, blog">
+    <meta name="description" content="目标:爬取豆瓣Top250数据(这里只是学习)
+创建Scrapy项目这里使用的是python的一个爬虫框架scrapy
+在cmd里使用下面命令安装scrapy
+pip install scrapy
+使用下面的命令创建项目
+scrapy st">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | blog</title>
+    <title>python爬虫学习笔记 | blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -26,8 +31,8 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="alternate" href="/atom.xml" title="blog" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="blog" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -241,13 +246,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        python爬虫学习笔记
                     </div>
                 </div>
             </div>
@@ -357,12 +362,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                学习
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -371,7 +389,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-12
+                    2018-12-28
                 </div>
                 
 
@@ -380,14 +398,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    125
+                    763
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 				
@@ -403,15 +421,89 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <p>目标:爬取豆瓣Top250数据(这里只是学习)</p>
+<h2 id="创建Scrapy项目"><a href="#创建Scrapy项目" class="headerlink" title="创建Scrapy项目"></a>创建Scrapy项目</h2><p>这里使用的是python的一个爬虫框架<a href="https://github.com/scrapy/scrapy" target="_blank" rel="noopener">scrapy</a></p>
+<p>在cmd里使用下面命令安装scrapy</p>
+<pre class=" language-cmd"><code class="language-cmd">pip install scrapy</code></pre>
+<p>使用下面的命令创建项目</p>
+<pre class=" language-cmd"><code class="language-cmd">scrapy startproject douban</code></pre>
+<h2 id="编写items文件-根据需要爬取的内容来定义字段"><a href="#编写items文件-根据需要爬取的内容来定义字段" class="headerlink" title="编写items文件(根据需要爬取的内容来定义字段)"></a>编写items文件(根据需要爬取的内容来定义字段)</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> scrapy
+
+
+<span class="token keyword">class</span> <span class="token class-name">DoubanItem</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Item<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># define the fields for your item here like:</span>
+    name <span class="token operator">=</span> scrapy<span class="token punctuation">.</span>Field<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 电影名称</span>
+    top <span class="token operator">=</span> scrapy<span class="token punctuation">.</span>Field<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 电影排名</span>
+    rating_num <span class="token operator">=</span> scrapy<span class="token punctuation">.</span>Field<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 电影评分</span>
+    rating_sum <span class="token operator">=</span> scrapy<span class="token punctuation">.</span>Field<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 电影评价人数</span>
+    inq <span class="token operator">=</span> scrapy<span class="token punctuation">.</span>Field<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 简介</span>
+    url <span class="token operator">=</span> scrapy<span class="token punctuation">.</span>Field<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># url</span>
+</code></pre>
+<h2 id="编写爬虫文件"><a href="#编写爬虫文件" class="headerlink" title="编写爬虫文件"></a>编写爬虫文件</h2><p>在douban豆瓣目录下创建基础爬虫类DouBanSpider.py</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> scrapy
+
+<span class="token keyword">from</span> douban<span class="token punctuation">.</span>items <span class="token keyword">import</span> DoubanItem
+
+
+<span class="token keyword">class</span> <span class="token class-name">DouBanSpider</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">'douban'</span>
+    allowed_domains <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">start_requests</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            s <span class="token operator">=</span> str<span class="token punctuation">(</span>i <span class="token operator">*</span> <span class="token number">25</span><span class="token punctuation">)</span>
+            url <span class="token operator">=</span> <span class="token string">'https://movie.douban.com/top250?start='</span> <span class="token operator">+</span> s
+            <span class="token keyword">yield</span> scrapy<span class="token punctuation">.</span>Request<span class="token punctuation">(</span>url<span class="token punctuation">,</span> callback<span class="token operator">=</span>self<span class="token punctuation">.</span>parse<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">parse</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        movies <span class="token operator">=</span> response<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">"//div[starts-with(@class, 'item')]"</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> m <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>movies<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            item <span class="token operator">=</span> DoubanItem<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            item<span class="token punctuation">[</span><span class="token string">'url'</span><span class="token punctuation">]</span> <span class="token operator">=</span> movies<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">".//div/div/a/@href"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span>m<span class="token punctuation">]</span>
+            item<span class="token punctuation">[</span><span class="token string">'top'</span><span class="token punctuation">]</span> <span class="token operator">=</span> movies<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">".//div/em/text()"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span>m<span class="token punctuation">]</span>
+            item<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span> <span class="token operator">=</span> movies<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">".//div/div/a/span[1]/text()"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span>m<span class="token punctuation">]</span>
+            item<span class="token punctuation">[</span><span class="token string">'rating_num'</span><span class="token punctuation">]</span> <span class="token operator">=</span> movies<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">".//div/div/div/span[contains(@class,'rating_num')]/text()"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span>m<span class="token punctuation">]</span>
+            item<span class="token punctuation">[</span><span class="token string">'rating_sum'</span><span class="token punctuation">]</span> <span class="token operator">=</span> movies<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">".//div/div/div/span[4]/text()"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span>m<span class="token punctuation">]</span>
+            item<span class="token punctuation">[</span><span class="token string">'inq'</span><span class="token punctuation">]</span> <span class="token operator">=</span> movies<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">".//p[contains(@class,'quote')]/span/text()"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span>m<span class="token punctuation">]</span>
+            <span class="token keyword">yield</span> item
+</code></pre>
+<p>这里start_requests是请求页面数据，如果不写是根据你定义的start_urls 来进行请求，callback默认是parse方法。parse方法是做html的解析和二次请求，不过这里没有做二次请求。</p>
+<p>具体的html解析这里是使用了xpath选择器，当然还有css选择器，不过这里没有使用到。</p>
+<p>修改settings.py文件设置header</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 设置请求头部，添加url</span>
+DEFAULT_REQUEST_HEADERS <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">"User-Agent"</span><span class="token punctuation">:</span> <span class="token string">"Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0;"</span><span class="token punctuation">,</span>
+    <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span>
+<span class="token punctuation">}</span></code></pre>
+<p>运行<code>scrapy crawl douban -o douban.csv</code>之后就会发现在douban目录下多了一个douban.csv文件，里面是我们爬出的数据</p>
+<h2 id="存入数据库"><a href="#存入数据库" class="headerlink" title="存入数据库"></a>存入数据库</h2><p>当然我们想要的不是csv文件，一般都是想要将数据存入数据库，scrapy也支持存入数据库。首先安装pymysql执行命令<code>pip install pymysql</code>，然后打开pipelines.py编写代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> pymysql
+
+
+<span class="token keyword">class</span> <span class="token class-name">DoubanPipeline</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>conn <span class="token operator">=</span> pymysql<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'你的host'</span><span class="token punctuation">,</span> user<span class="token operator">=</span><span class="token string">'用户名'</span><span class="token punctuation">,</span> passwd<span class="token operator">=</span><span class="token string">'密码'</span><span class="token punctuation">,</span> db<span class="token operator">=</span><span class="token string">'数据库'</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>cursor <span class="token operator">=</span> self<span class="token punctuation">.</span>conn<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">process_item</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> item<span class="token punctuation">,</span> spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        title <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        top <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token string">'top'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        rating_num <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token string">'rating_num'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        rating_sum <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token string">'rating_sum'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        inq <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token string">'inq'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        url <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token string">'url'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sql <span class="token operator">=</span> <span class="token string">'insert into douban250(movie_name,rating_num,rating_sum,top_no,inq,url) VALUES (%s,%s,%s,%s,%s,%s)'</span>
+        self<span class="token punctuation">.</span>cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>sql<span class="token punctuation">,</span> <span class="token punctuation">(</span>title<span class="token punctuation">,</span> rating_num<span class="token punctuation">,</span> rating_sum<span class="token punctuation">,</span> top<span class="token punctuation">,</span> inq<span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>conn<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> item</code></pre>
+<p>修改settings.py</p>
+<pre class=" language-python"><code class="language-python">ITEM_PIPELINES <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'douban.pipelines.DoubanPipeline'</span><span class="token punctuation">:</span> <span class="token number">300</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre>
+<p>一个爬虫项目可以有多个管道，后面所跟着的数字是指这个管道的优先级。</p>
+<p>然后再运行<code>scrapy crawl douban</code>等待运行完成就会发现数据里有豆瓣Top250的数据了。</p>
+<p>scrapy还可以使用代理ip防止单个ip多次请求ip被ban的情况，这里就不多做赘述了。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -445,7 +537,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://sihuan1994.gitee.io" rel="external nofollow noreferrer">sihuan</a>
+                    <a href="http://sihuan1994.gitee.io" rel="external nofollow noreferrer">司欢</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -455,7 +547,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://sihuan1994.gitee.io/2019/11/12/hello-world/">http://sihuan1994.gitee.io/2019/11/12/hello-world/</a>
+                    <a href="http://sihuan1994.gitee.io/2018/12/28/python-pa-chong-xue-xi-bi-ji/">http://sihuan1994.gitee.io/2018/12/28/python-pa-chong-xue-xi-bi-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -468,7 +560,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="http://sihuan1994.gitee.io" target="_blank">sihuan</a>
+                    <a href="http://sihuan1994.gitee.io" target="_blank">司欢</a>
                     !
                 </span>
             </div>
@@ -492,7 +584,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -664,34 +760,51 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2019/11/12/hello-world/">
+                <a href="/2018/12/28/python-pa-chong-xue-xi-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="python爬虫学习笔记">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">python爬虫学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            目标:爬取豆瓣Top250数据(这里只是学习)
+创建Scrapy项目这里使用的是python的一个爬虫框架scrapy
+在cmd里使用下面命令安装scrapy
+pip install scrapy
+使用下面的命令创建项目
+scrapy st
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-12-28
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            sihuan
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sihuan1994.gitee.io/"/>
-  <updated>2019-11-12T00:52:12.842Z</updated>
+  <updated>2019-11-12T07:08:26.392Z</updated>
   <id>http://sihuan1994.gitee.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://sihuan1994.gitee.io/2019/11/12/hello-world/"/>
-    <id>http://sihuan1994.gitee.io/2019/11/12/hello-world/</id>
-    <published>2019-11-12T00:52:12.842Z</published>
-    <updated>2019-11-12T00:52:12.842Z</updated>
+    <title>python爬虫学习笔记</title>
+    <link href="http://sihuan1994.gitee.io/2018/12/28/python-pa-chong-xue-xi-bi-ji/"/>
+    <id>http://sihuan1994.gitee.io/2018/12/28/python-pa-chong-xue-xi-bi-ji/</id>
+    <published>2018-12-28T06:17:07.000Z</published>
+    <updated>2019-11-12T07:08:26.392Z</updated>
     
     <summary type="html">
     
@@ -29,13 +29,18 @@
       
         
         
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+          &lt;p&gt;目标:爬取豆瓣Top250数据(这里只是学习)&lt;/p&gt;
+&lt;h2 id=&quot;创建Scrapy项目&quot;&gt;&lt;a href=&quot;#创建Scrapy项目&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
     
+      <category term="学习" scheme="http://sihuan1994.gitee.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="python" scheme="http://sihuan1994.gitee.io/tags/python/"/>
     
   </entry>
   
@@ -44,7 +49,7 @@
     <link href="http://sihuan1994.gitee.io/2016/12/16/android-fan-bian-yi-ru-men/"/>
     <id>http://sihuan1994.gitee.io/2016/12/16/android-fan-bian-yi-ru-men/</id>
     <published>2016-12-16T05:55:49.000Z</published>
-    <updated>2019-11-12T07:00:32.108Z</updated>
+    <updated>2019-11-12T07:03:35.682Z</updated>
     
     <summary type="html">
     
